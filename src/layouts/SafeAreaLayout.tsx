@@ -1,7 +1,7 @@
 import React from "react";
 import { SafeAreaView, ViewStyle } from "react-native";
 
-import { COLORS } from "../constants/COLORS";
+import { COLORS } from "../utils/constants/COLORS";
 
 type SafeAreaLayoutProps = {
   children: React.ReactNode;
