@@ -7,12 +7,18 @@ import {
 import { getAllPeople } from "../api/peopleApi";
 import { People } from "../utils/types/People.types";
 
+type usePeopleProps = {
+  page: number;
+  options?: UseQueryOptions<unknown, Error, People>;
+};
+
 export const usePeople = (
+  page: number,
   options?: UseQueryOptions<unknown, Error, People>
 ): UseQueryResult<People, Error> => {
   return useQuery({
-    queryKey: ["allPeople"],
-    queryFn: getAllPeople,
+    queryKey: ["allPeople", page],
+    queryFn: () => getAllPeople(page),
     ...options,
   });
 };

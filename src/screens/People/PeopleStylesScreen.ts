@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 import { COLORS } from "../../utils/constants/COLORS";
 
-export const charactersStyles = StyleSheet.create({
+export const peopleStyles = StyleSheet.create({
   container: {
     display: "flex",
     width: "100%",

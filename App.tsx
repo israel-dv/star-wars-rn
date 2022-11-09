@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 
-import { Characters } from "./src/screens/Characters/Characters";
+import { PeopleScreen } from "./src/screens/People/PeopleScreen";
 
 const queryClient = new QueryClient();
 
@@ -15,7 +15,7 @@ export default function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Characters />
+      <PeopleScreen />
     </QueryClientProvider>
   );
 }
