@@ -1,7 +1,8 @@
+import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { SafeAreaView, ViewStyle } from "react-native";
 
-import { COLORS } from "../utils/constants/COLORS";
+import { COLORS } from "../../utils/constants/COLORS";
 
 type SafeAreaLayoutProps = {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ export const SafeAreaLayout = ({
     <SafeAreaView
       style={{ backgroundColor: COLORS.primaryBackgorund, ...style }}
     >
+      <StatusBar style="light" />
       {children}
     </SafeAreaView>
   );

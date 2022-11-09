@@ -6,12 +6,13 @@ import {
   TextInputChangeEventData,
   View,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { Card } from "../../components/Card";
 import { Searcher } from "../../components/Searcher";
 import { usePeople } from "../../hooks/usePeople";
 import { usePeopleByName } from "../../hooks/usePeopleByName";
-import { SafeAreaLayout } from "../../layouts";
+import { SafeAreaLayout } from "../../layouts/SafeAreaLayout";
 import { PeopleResults } from "../../utils/types/People.types";
 import { peopleStyles } from "./PeopleStylesScreen";
 
@@ -21,6 +22,7 @@ export const PeopleScreen = (): React.ReactElement => {
   const [peopleByNameList, setPeopleByNameList] = useState<PeopleResults[]>([]);
   const [name, setName] = useState<string>();
 
+  const { navigate } = useNavigation();
   const { data: people, isLoading, isFetching } = usePeople(page);
   const { data: peopleByName, isLoading: isLoadingByName } =
     usePeopleByName(name);
@@ -39,7 +41,7 @@ export const PeopleScreen = (): React.ReactElement => {
   }, [peopleByName]);
 
   const handleClick = () => {
-    console.log("Go to page");
+    navigate("PeopleDetails");
   };
 
   const onChangeInputName = (
