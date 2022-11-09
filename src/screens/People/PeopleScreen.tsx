@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Text, View } from "react-native";
+import {
+  FlatList,
+  NativeSyntheticEvent,
+  Text,
+  TextInputChangeEventData,
+  View,
+} from "react-native";
 
 import { Card } from "../../components/Card";
+import { Searcher } from "../../components/Searcher";
 import { usePeople } from "../../hooks/usePeople";
+import { usePeopleByName } from "../../hooks/usePeopleByName";
 import { SafeAreaLayout } from "../../layouts";
 import { PeopleResults } from "../../utils/types/People.types";
 import { peopleStyles } from "./PeopleStylesScreen";
@@ -10,8 +18,15 @@ import { peopleStyles } from "./PeopleStylesScreen";
 export const PeopleScreen = (): React.ReactElement => {
   const [page, setPage] = useState<number>(1);
   const [peopleList, setPeopleList] = useState<PeopleResults[]>([]);
+  const [peopleByNameList, setPeopleByNameList] = useState<PeopleResults[]>([]);
+  const [name, setName] = useState<string>();
 
   const { data: people, isLoading, isFetching } = usePeople(page);
+  const { data: peopleByName, isLoading: isLoadingByName } =
+    usePeopleByName(name);
+
+  const isPaginationEnabled = !name?.length;
+  const peopleToShow = !name?.length ? peopleList : peopleByNameList;
 
   useEffect(() => {
     if (!isLoading && people?.results) {
@@ -19,19 +34,34 @@ export const PeopleScreen = (): React.ReactElement => {
     }
   }, [people, page]);
 
+  useEffect(() => {
+    if (peopleByName?.results) setPeopleByNameList(peopleByName.results);
+  }, [peopleByName]);
+
   const handleClick = () => {
     console.log("Go to page");
   };
 
+  const onChangeInputName = (
+    event: NativeSyntheticEvent<TextInputChangeEventData>
+  ) => {
+    setName(event.nativeEvent.text);
+  };
+
   const handleEndReached = () => {
-    if (people?.next) setPage((prevPage) => prevPage + 1);
+    if (people?.next && isPaginationEnabled)
+      setPage((prevPage) => prevPage + 1);
   };
 
   return (
     <SafeAreaLayout>
       <View style={peopleStyles.container}>
         <FlatList
-          data={peopleList}
+          data={peopleToShow}
+          ListHeaderComponent={
+            <Searcher value={name} onChange={onChangeInputName} />
+          }
+          stickyHeaderIndices={[0]}
           renderItem={({ item }) => (
             <Card
               name={item.name}

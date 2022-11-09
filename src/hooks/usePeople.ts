@@ -7,11 +7,6 @@ import {
 import { getAllPeople } from "../api/peopleApi";
 import { People } from "../utils/types/People.types";
 
-type usePeopleProps = {
-  page: number;
-  options?: UseQueryOptions<unknown, Error, People>;
-};
-
 export const usePeople = (
   page: number,
   options?: UseQueryOptions<unknown, Error, People>
@@ -19,6 +14,9 @@ export const usePeople = (
   return useQuery({
     queryKey: ["allPeople", page],
     queryFn: () => getAllPeople(page),
+    onError: (error) => {
+      throw Error("getPeople Error", error);
+    }, // This supply try - catch and here we catch the error
     ...options,
   });
 };
