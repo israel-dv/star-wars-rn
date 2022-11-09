@@ -3,5 +3,5 @@ export const COLORS = {
   secondaryBackground: "rgb(29, 32, 42)",
   textPrimaryColor: "rgb(249,201, 98)",
   textSecondaryColor: "rgb(97, 105, 123)",
-  borderColor: "rgb(213, 255, 124)",
+  borderColor: "rgb(73, 79, 94)",
 };
