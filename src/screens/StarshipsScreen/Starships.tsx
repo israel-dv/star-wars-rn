@@ -9,6 +9,8 @@ import { SafeAreaLayout } from "../../layouts/SafeAreaLayout";
 import { StarshipsResults } from "../../utils/types/Starships.types";
 import { FooterLoading } from "../../components/FooterLoading";
 import { ScreenLoading } from "../../components/ScreenLoading";
+import { EmptyList } from "../../components/EmptyList";
+import { isError } from "@tanstack/react-query";
 
 export const Starships = (): React.ReactElement => {
   const [page, setPage] = useState<number>(1);
@@ -19,6 +21,7 @@ export const Starships = (): React.ReactElement => {
     data: starships,
     isLoading,
     isFetching,
+    isError,
   } = useStarships(page, { keepPreviousData: true });
 
   useEffect(() => {
@@ -44,6 +47,7 @@ export const Starships = (): React.ReactElement => {
         <FlatList
           data={starshipList}
           ListHeaderComponent={<HeaderList text="Starships" />}
+          ListEmptyComponent={<EmptyList isErrorContentType={isError} />}
           stickyHeaderIndices={[0]}
           renderItem={({ item }) => (
             <Card

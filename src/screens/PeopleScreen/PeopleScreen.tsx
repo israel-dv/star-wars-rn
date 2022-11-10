@@ -14,6 +14,7 @@ import { SafeAreaLayout } from "../../layouts/SafeAreaLayout";
 import { PeopleResults } from "../../utils/types/People.types";
 import { FooterLoading } from "../../components/FooterLoading";
 import { ScreenLoading } from "../../components/ScreenLoading";
+import { EmptyList } from "../../components/EmptyList";
 
 export const PeopleScreen = (): React.ReactElement => {
   const [page, setPage] = useState<number>(1);
@@ -26,6 +27,7 @@ export const PeopleScreen = (): React.ReactElement => {
     data: people,
     isLoading,
     isFetching,
+    isError,
   } = usePeople(page, { keepPreviousData: true });
   const { data: peopleByName } = usePeopleByName(name);
 
@@ -70,6 +72,7 @@ export const PeopleScreen = (): React.ReactElement => {
           ListHeaderComponent={
             <Searcher value={name} onChange={onChangeInputName} />
           }
+          ListEmptyComponent={<EmptyList isErrorContentType={isError} />}
           stickyHeaderIndices={[0]}
           renderItem={({ item }) => (
             <Card
