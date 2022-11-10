@@ -1,1 +1,0 @@
-export { HeadingShadow } from "./HeadingShadow";
