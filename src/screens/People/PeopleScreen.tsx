@@ -6,7 +6,7 @@ import {
   TextInputChangeEventData,
   View,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 
 import { Card } from "../../components/Card";
 import { Searcher } from "../../components/Searcher";
@@ -22,7 +22,7 @@ export const PeopleScreen = (): React.ReactElement => {
   const [peopleByNameList, setPeopleByNameList] = useState<PeopleResults[]>([]);
   const [name, setName] = useState<string>();
 
-  const { navigate } = useNavigation();
+  const navigation = useNavigation();
   const { data: people, isLoading, isFetching } = usePeople(page);
   const { data: peopleByName, isLoading: isLoadingByName } =
     usePeopleByName(name);
@@ -40,8 +40,10 @@ export const PeopleScreen = (): React.ReactElement => {
     if (peopleByName?.results) setPeopleByNameList(peopleByName.results);
   }, [peopleByName]);
 
-  const handleClick = () => {
-    navigate("PeopleDetails");
+  const handleClick = (character: PeopleResults) => {
+    navigation.navigate("PeopleDetails", {
+      character,
+    });
   };
 
   const onChangeInputName = (
@@ -69,7 +71,7 @@ export const PeopleScreen = (): React.ReactElement => {
               name={item.name}
               birth_year={item.birth_year}
               gender={item.gender}
-              onPress={handleClick}
+              onPress={() => handleClick(item)}
             />
           )}
           onEndReached={handleEndReached}

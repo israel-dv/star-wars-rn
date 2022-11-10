@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, TouchableHighlight, View } from "react-native";
+import { Typography } from "../Typography/Typography";
 
 import { cardStyles } from "./CardStyles";
 
@@ -24,13 +25,15 @@ export const Card = ({
   return (
     <TouchableHighlight onPress={onPress} style={cardStyles.card}>
       <View>
-        <Text style={cardStyles.cardNameText}>{name}</Text>
-        <Text
-          style={cardStyles.cardGenderText}
-        >{`${CARD_TEXT.gender}: ${gender}`}</Text>
-        <Text
-          style={cardStyles.cardBirthYearText}
-        >{`${CARD_TEXT.birthYear}: ${birth_year}`}</Text>
+        <Typography.Title text={name} />
+        <Typography.TextRegular
+          text={`${CARD_TEXT.gender}: ${gender}`}
+          style={{ color: "rgb(96,131,186)" }}
+        />
+        <Typography.TextRegular
+          text={`${CARD_TEXT.birthYear}: ${birth_year}`}
+          style={{ color: "rgb(101,152, 83)" }}
+        />
       </View>
     </TouchableHighlight>
   );

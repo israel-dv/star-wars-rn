@@ -18,26 +18,4 @@ export const cardStyles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
   },
-  cardNameText: {
-    color: "white",
-    fontSize: 24,
-    fontFamily: "Archivo-Black",
-    textShadowColor: "orange",
-    textShadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    textShadowRadius: 2,
-  },
-  cardGenderText: {
-    color: "rgb(96,131,186)",
-    fontFamily: "Sen-Regular",
-    fontSize: 15,
-    marginTop: 5,
-  },
-  cardBirthYearText: {
-    color: "rgb(101,152, 83)",
-    fontFamily: "Sen-Regular",
-    fontSize: 15,
-  },
 });
