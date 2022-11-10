@@ -32,3 +32,8 @@ and run the project
 - Pagination: pagination is achieved when the end of the last element of the list is reached, automatically making the request to the second page. If your internet is slow you will see a loading component at the bottom of the list, otherwise it will load the following characters. Remember, react query keeps its cache for each request, this is the magic of this library
 
 ### Demo 📹
+
+https://user-images.githubusercontent.com/18078522/201208399-3b44bfd3-fbba-4802-a9a5-072ac42ad4a4.mp4
+
+
+
