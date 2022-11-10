@@ -1,0 +1,1 @@
+export { StarshipDetails } from "./StarshipDetail";

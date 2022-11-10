@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { Card } from "../../components/Card";
 import { HeaderList } from "../../components/HeaderList/HeaderList";
@@ -11,6 +12,7 @@ export const Starships = (): React.ReactElement => {
   const [page, setPage] = useState<number>(1);
   const [starshipList, setStarshipList] = useState<StarshipsResults[]>([]);
 
+  const { navigate } = useNavigation();
   const { data: starships, isLoading, isFetching } = useStarships(page);
 
   useEffect(() => {
@@ -18,8 +20,10 @@ export const Starships = (): React.ReactElement => {
       setStarshipList([...starshipList, ...starships.results]);
   }, [starships, page]);
 
-  const handleClick = () => {
-    console.log("handle click");
+  const handleClick = (starship: StarshipsResults) => {
+    navigate("StarshipDetails", {
+      starship,
+    });
   };
 
   const handleEndReached = () => {
@@ -37,7 +41,7 @@ export const Starships = (): React.ReactElement => {
             title={item.name}
             primaryText={`Model: ${item.model}`}
             secondayText={`Passengers: ${item.passengers}`}
-            onPress={handleClick}
+            onPress={() => handleClick(item)}
           />
         )}
         onEndReached={handleEndReached}

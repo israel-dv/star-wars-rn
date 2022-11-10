@@ -2,9 +2,7 @@ import { useFonts } from "expo-font";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NavigationContainer } from "@react-navigation/native";
 
-import { PeopleScreen } from "./src/screens/People/PeopleScreen";
-import { DetailsNavigator } from "./src/components/Navigators/DetailsNavigator";
-import { TabNavigator } from "./src/components/TabNavigator";
+import { AppNavigator } from "./src/components/Navigators/AppNavigator";
 
 const queryClient = new QueryClient();
 
@@ -19,7 +17,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>
-        <TabNavigator />
+        <AppNavigator />
       </NavigationContainer>
     </QueryClientProvider>
   );
