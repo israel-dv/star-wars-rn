@@ -1,6 +1,12 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { SafeAreaView, View, ViewStyle } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import {
+  Platform,
+  SafeAreaView,
+  StatusBar as RNStatusBar,
+  View,
+  ViewStyle,
+} from "react-native";
 
 import { COLORS } from "../../utils/constants/COLORS";
 import { safeAreaLayoutStyles } from "./SafeAreaLayoutStyles";
@@ -14,9 +20,14 @@ export const SafeAreaLayout = ({
   children,
   style,
 }: SafeAreaLayoutProps): React.ReactElement => {
+  const paddingTop = Platform.OS === "android" ? RNStatusBar.currentHeight : 0;
   return (
     <SafeAreaView
-      style={{ backgroundColor: COLORS.primaryBackgorund, ...style }}
+      style={{
+        backgroundColor: COLORS.primaryBackgorund,
+        paddingTop,
+        ...style,
+      }}
     >
       <StatusBar style="light" />
       <View style={safeAreaLayoutStyles.view}>{children}</View>

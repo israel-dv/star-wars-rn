@@ -1,5 +1,8 @@
 import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  createNativeStackNavigator,
+  NativeStackScreenProps,
+} from "@react-navigation/native-stack";
 
 import { PeopleDetailsScreen } from "../../screens/PeopleScreen/PeopleDetails";
 import { TabNavigator } from "../TabNavigator";
@@ -10,7 +13,7 @@ import { StarshipsResults } from "../../utils/types/Starships.types";
 import { FilmsResults } from "../../utils/types/Films.types";
 
 export type StackParamList = {
-  Home: undefined;
+  Home: NativeStackScreenProps<StackParamList>;
   PeopleDetails: { character: PeopleResults };
   StarshipDetails: { starship: StarshipsResults };
   FilmDetails: { film: FilmsResults };

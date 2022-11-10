@@ -17,7 +17,7 @@ type StarshipScreenProps = NativeStackScreenProps<
   "StarshipDetails"
 >;
 
-export const Starships = ({
+export const StarshipsScreen = ({
   navigation,
 }: StarshipScreenProps): React.ReactElement => {
   const { navigate } = navigation;
