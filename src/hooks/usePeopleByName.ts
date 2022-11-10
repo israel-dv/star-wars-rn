@@ -4,7 +4,7 @@ import {
   UseQueryResult,
 } from "@tanstack/react-query";
 
-import { getPeopleByName } from "../api/peopleApi";
+import { getPeopleByName } from "../api/swapiApi";
 import { People } from "../utils/types/People.types";
 
 export const usePeopleByName = (

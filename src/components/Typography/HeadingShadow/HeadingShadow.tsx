@@ -3,7 +3,7 @@ import { Text } from "react-native";
 
 import { headingShadowStyles } from "./HeadingShadowStyles";
 
-type TitleProps = {
+type HeadingShadowProps = {
   text: string;
   fontSize?: number;
   textAlign?: "center" | "right" | "left" | "justify" | "auto";
@@ -13,7 +13,7 @@ export const HeadingShadow = ({
   text,
   fontSize = 24,
   textAlign = "auto",
-}: TitleProps): React.ReactElement => {
+}: HeadingShadowProps): React.ReactElement => {
   return (
     <Text style={[headingShadowStyles.title, { fontSize, textAlign }]}>
       {text}

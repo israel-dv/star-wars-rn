@@ -2,6 +2,7 @@ import React from "react";
 
 import { TextRegular } from "./TextRegular/TextRegular";
 import { HeadingShadow } from "./HeadingShadow";
+import { Heading } from "./Heading";
 
 type TypographyProps = {
   children: React.ReactNode;
@@ -21,4 +22,5 @@ export const Typography = ({ children }: TypographyProps) => {
 };
 
 Typography.Title = HeadingShadow;
+Typography.Heading = Heading;
 Typography.TextRegular = TextRegular;

@@ -1,7 +1,6 @@
 import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
-import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { COLORS } from "../../utils/constants/COLORS";
 import { Typography } from "../Typography";
@@ -14,7 +13,7 @@ type StyleIconProps = {
 enum TapOptions {
   People = "People",
   Films = "Films",
-  Planets = "Planets",
+  Starships = "Starships",
 }
 
 const styleIcon = ({ focused, route }: StyleIconProps): React.ReactElement => {
@@ -24,12 +23,24 @@ const styleIcon = ({ focused, route }: StyleIconProps): React.ReactElement => {
 
   switch (route.name) {
     case TapOptions.People:
-      return <Fontisto name="persons" size={size} color={color} />;
+      return (
+        <MaterialCommunityIcons
+          name="robot-excited-outline"
+          size={size}
+          color={color}
+        />
+      );
     case TapOptions.Films:
-      return <Ionicons name="earth" size={size} color={color} />;
-    case TapOptions.Planets:
       return (
         <MaterialCommunityIcons name="movie-open" size={size} color={color} />
+      );
+    case TapOptions.Starships:
+      return (
+        <MaterialCommunityIcons
+          name="rocket-launch"
+          size={size}
+          color={color}
+        />
       );
     default:
       return <Fontisto name="persons" size={size} color={color} />;

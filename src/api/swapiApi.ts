@@ -1,4 +1,6 @@
+import { Films } from "../utils/types/Films.types";
 import { People } from "../utils/types/People.types";
+import { Starships } from "../utils/types/Starships.types";
 import { swapi } from "./swapiClient";
 
 /**
@@ -23,6 +25,23 @@ export const getAllPeople = async (page: number): Promise<People> => {
  */
 export const getPeopleByName = async (name?: string) => {
   const response = await swapi.get(`/people/?search=${name}`);
+
+  return response.data;
+};
+
+/**
+ *
+ * @param name
+ * @returns Promise Films { }
+ */
+export const getAllFilms = async (): Promise<Films> => {
+  const response = await swapi.get("/films");
+
+  return response.data;
+};
+
+export const getAllStarships = async (page: number): Promise<Starships> => {
+  const response = await swapi.get(`/starships/?page=${page}`);
 
   return response.data;
 };

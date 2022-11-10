@@ -4,9 +4,8 @@ import {
   NativeSyntheticEvent,
   Text,
   TextInputChangeEventData,
-  View,
 } from "react-native";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 import { Card } from "../../components/Card";
 import { Searcher } from "../../components/Searcher";
@@ -66,14 +65,13 @@ export const PeopleScreen = (): React.ReactElement => {
         stickyHeaderIndices={[0]}
         renderItem={({ item }) => (
           <Card
-            name={item.name}
-            birth_year={item.birth_year}
-            gender={item.gender}
+            title={item.name}
+            primaryText={`Gender: ${item.gender}`}
+            secondayText={`Birth Year: ${item.gender}`}
             onPress={() => handleClick(item)}
           />
         )}
         onEndReached={handleEndReached}
-        onEndReachedThreshold={0.2}
         ListFooterComponent={isFetching ? <Text>isLoadingFucker</Text> : null}
       />
     </SafeAreaLayout>

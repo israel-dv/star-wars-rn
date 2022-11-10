@@ -3,7 +3,7 @@ import { Text, TextStyle } from "react-native";
 import { textRegularStyles } from "./TextRegularStyles";
 
 type TextRegularProps = {
-  text: string;
+  text?: string;
   style?: TextStyle;
 };
 
