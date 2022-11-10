@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Text } from "react-native";
+import { FlatList } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { Card } from "../../components/Card";
@@ -7,6 +7,7 @@ import { HeaderList } from "../../components/HeaderList/HeaderList";
 import { useStarships } from "../../hooks/useStarships";
 import { SafeAreaLayout } from "../../layouts/SafeAreaLayout";
 import { StarshipsResults } from "../../utils/types/Starships.types";
+import { FooterLoading } from "../../components/FooterLoading";
 
 export const Starships = (): React.ReactElement => {
   const [page, setPage] = useState<number>(1);
@@ -45,7 +46,7 @@ export const Starships = (): React.ReactElement => {
           />
         )}
         onEndReached={handleEndReached}
-        ListFooterComponent={isFetching ? <Text>isLoadingFucker</Text> : null}
+        ListFooterComponent={isFetching ? <FooterLoading /> : null}
       />
     </SafeAreaLayout>
   );

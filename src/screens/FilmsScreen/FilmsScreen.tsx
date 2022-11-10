@@ -3,6 +3,7 @@ import React from "react";
 import { FlatList } from "react-native";
 
 import { Card } from "../../components/Card";
+import { FooterLoading } from "../../components/FooterLoading";
 import { HeaderList } from "../../components/HeaderList/HeaderList";
 import { useFilms } from "../../hooks/useFilms";
 import { SafeAreaLayout } from "../../layouts/SafeAreaLayout";

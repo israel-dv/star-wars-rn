@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   FlatList,
   NativeSyntheticEvent,
-  Text,
   TextInputChangeEventData,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -13,6 +12,7 @@ import { usePeople } from "../../hooks/usePeople";
 import { usePeopleByName } from "../../hooks/usePeopleByName";
 import { SafeAreaLayout } from "../../layouts/SafeAreaLayout";
 import { PeopleResults } from "../../utils/types/People.types";
+import { FooterLoading } from "../../components/FooterLoading";
 
 export const PeopleScreen = (): React.ReactElement => {
   const [page, setPage] = useState<number>(1);
@@ -72,7 +72,7 @@ export const PeopleScreen = (): React.ReactElement => {
           />
         )}
         onEndReached={handleEndReached}
-        ListFooterComponent={isFetching ? <Text>isLoadingFucker</Text> : null}
+        ListFooterComponent={isFetching ? <FooterLoading /> : null}
       />
     </SafeAreaLayout>
   );
