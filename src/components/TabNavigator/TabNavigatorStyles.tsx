@@ -54,6 +54,8 @@ const styleLabel = ({ focused, route }: StyleIconProps) => {
       style={{
         color: focused ? COLORS.orange : COLORS.grayDark,
         fontSize: 12,
+        margin: 0,
+        padding: 0,
       }}
     />
   );
@@ -67,6 +69,8 @@ export const styleNavigator = (routeProps: any): BottomTabNavigationOptions => {
     tabBarLabel: ({ focused }) => styleLabel({ focused, route }),
     tabBarStyle: {
       backgroundColor: COLORS.secondaryBackground,
+      height: 70,
+      paddingBottom: 20,
     },
     headerShown: false,
   };
