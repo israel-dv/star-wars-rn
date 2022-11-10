@@ -1,7 +1,7 @@
 import React from "react";
 
 import { TextRegular } from "./TextRegular/TextRegular";
-import { Title } from "./Title";
+import { HeadingShadow } from "./HeadingShadow";
 
 type TypographyProps = {
   children: React.ReactNode;
@@ -20,5 +20,5 @@ export const Typography = ({ children }: TypographyProps) => {
   return <>{children}</>;
 };
 
-Typography.Title = Title;
+Typography.Title = HeadingShadow;
 Typography.TextRegular = TextRegular;

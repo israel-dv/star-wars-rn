@@ -1,7 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
 
-import { titleStyles } from "./TitleStyles";
+import { headingShadowStyles } from "./HeadingShadowStyles";
 
 type TitleProps = {
   text: string;
@@ -9,12 +9,14 @@ type TitleProps = {
   textAlign?: "center" | "right" | "left" | "justify" | "auto";
 };
 
-export const Title = ({
+export const HeadingShadow = ({
   text,
   fontSize = 24,
   textAlign = "auto",
 }: TitleProps): React.ReactElement => {
   return (
-    <Text style={[titleStyles.title, { fontSize, textAlign }]}>{text}</Text>
+    <Text style={[headingShadowStyles.title, { fontSize, textAlign }]}>
+      {text}
+    </Text>
   );
 };
