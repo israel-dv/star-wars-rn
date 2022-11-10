@@ -1,10 +1,7 @@
 import React from "react";
-// import { createShimmerPlaceholder } from "react-native-shimmer-placeholder";
-// import { LinearGradient } from "expo-linear-gradient";
-import { ActivityIndicator, Text, View } from "react-native";
-import { footerLoadingStyles } from "./FooterLoadingStyles";
+import { ActivityIndicator, View } from "react-native";
 
-// const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
+import { footerLoadingStyles } from "./FooterLoadingStyles";
 
 export const FooterLoading = () => {
   return (

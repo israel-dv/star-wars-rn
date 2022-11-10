@@ -13,6 +13,7 @@ import { usePeopleByName } from "../../hooks/usePeopleByName";
 import { SafeAreaLayout } from "../../layouts/SafeAreaLayout";
 import { PeopleResults } from "../../utils/types/People.types";
 import { FooterLoading } from "../../components/FooterLoading";
+import { ScreenLoading } from "../../components/ScreenLoading";
 
 export const PeopleScreen = (): React.ReactElement => {
   const [page, setPage] = useState<number>(1);
@@ -21,9 +22,12 @@ export const PeopleScreen = (): React.ReactElement => {
   const [name, setName] = useState<string>();
 
   const navigation = useNavigation();
-  const { data: people, isLoading, isFetching } = usePeople(page);
-  const { data: peopleByName, isLoading: isLoadingByName } =
-    usePeopleByName(name);
+  const {
+    data: people,
+    isLoading,
+    isFetching,
+  } = usePeople(page, { keepPreviousData: true });
+  const { data: peopleByName } = usePeopleByName(name);
 
   const isPaginationEnabled = !name?.length;
   const peopleToShow = !name?.length ? peopleList : peopleByNameList;
@@ -51,29 +55,34 @@ export const PeopleScreen = (): React.ReactElement => {
   };
 
   const handleEndReached = () => {
-    if (people?.next && isPaginationEnabled)
+    if (people?.next && isPaginationEnabled) {
       setPage((prevPage) => prevPage + 1);
+    }
   };
 
   return (
     <SafeAreaLayout>
-      <FlatList
-        data={peopleToShow}
-        ListHeaderComponent={
-          <Searcher value={name} onChange={onChangeInputName} />
-        }
-        stickyHeaderIndices={[0]}
-        renderItem={({ item }) => (
-          <Card
-            title={item.name}
-            primaryText={`Gender: ${item.gender}`}
-            secondayText={`Birth Year: ${item.gender}`}
-            onPress={() => handleClick(item)}
-          />
-        )}
-        onEndReached={handleEndReached}
-        ListFooterComponent={isFetching ? <FooterLoading /> : null}
-      />
+      {isLoading ? (
+        <ScreenLoading showSearcher />
+      ) : (
+        <FlatList
+          data={peopleToShow}
+          ListHeaderComponent={
+            <Searcher value={name} onChange={onChangeInputName} />
+          }
+          stickyHeaderIndices={[0]}
+          renderItem={({ item }) => (
+            <Card
+              title={item.name}
+              primaryText={`Gender: ${item.gender}`}
+              secondayText={`Birth Year: ${item.gender}`}
+              onPress={() => handleClick(item)}
+            />
+          )}
+          onEndReached={handleEndReached}
+          ListFooterComponent={isFetching ? <FooterLoading /> : null}
+        />
+      )}
     </SafeAreaLayout>
   );
 };

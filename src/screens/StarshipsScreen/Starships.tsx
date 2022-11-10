@@ -8,13 +8,18 @@ import { useStarships } from "../../hooks/useStarships";
 import { SafeAreaLayout } from "../../layouts/SafeAreaLayout";
 import { StarshipsResults } from "../../utils/types/Starships.types";
 import { FooterLoading } from "../../components/FooterLoading";
+import { ScreenLoading } from "../../components/ScreenLoading";
 
 export const Starships = (): React.ReactElement => {
   const [page, setPage] = useState<number>(1);
   const [starshipList, setStarshipList] = useState<StarshipsResults[]>([]);
 
   const { navigate } = useNavigation();
-  const { data: starships, isLoading, isFetching } = useStarships(page);
+  const {
+    data: starships,
+    isLoading,
+    isFetching,
+  } = useStarships(page, { keepPreviousData: true });
 
   useEffect(() => {
     if (!isLoading && starships?.results)
@@ -33,21 +38,25 @@ export const Starships = (): React.ReactElement => {
 
   return (
     <SafeAreaLayout>
-      <FlatList
-        data={starshipList}
-        ListHeaderComponent={<HeaderList text="Starships" />}
-        stickyHeaderIndices={[0]}
-        renderItem={({ item }) => (
-          <Card
-            title={item.name}
-            primaryText={`Model: ${item.model}`}
-            secondayText={`Passengers: ${item.passengers}`}
-            onPress={() => handleClick(item)}
-          />
-        )}
-        onEndReached={handleEndReached}
-        ListFooterComponent={isFetching ? <FooterLoading /> : null}
-      />
+      {isLoading ? (
+        <ScreenLoading />
+      ) : (
+        <FlatList
+          data={starshipList}
+          ListHeaderComponent={<HeaderList text="Starships" />}
+          stickyHeaderIndices={[0]}
+          renderItem={({ item }) => (
+            <Card
+              title={item.name}
+              primaryText={`Model: ${item.model}`}
+              secondayText={`Passengers: ${item.passengers}`}
+              onPress={() => handleClick(item)}
+            />
+          )}
+          onEndReached={handleEndReached}
+          ListFooterComponent={isFetching ? <FooterLoading /> : null}
+        />
+      )}
     </SafeAreaLayout>
   );
 };
