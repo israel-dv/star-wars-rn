@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import { PeopleScreen } from "./src/screens/People/PeopleScreen";
 import { DetailsNavigator } from "./src/components/Navigators/DetailsNavigator";
+import { TabNavigator } from "./src/components/TabNavigator";
 
 const queryClient = new QueryClient();
 
@@ -18,7 +19,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>
-        <DetailsNavigator />
+        <TabNavigator />
       </NavigationContainer>
     </QueryClientProvider>
   );

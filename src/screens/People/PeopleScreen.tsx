@@ -14,7 +14,6 @@ import { usePeople } from "../../hooks/usePeople";
 import { usePeopleByName } from "../../hooks/usePeopleByName";
 import { SafeAreaLayout } from "../../layouts/SafeAreaLayout";
 import { PeopleResults } from "../../utils/types/People.types";
-import { peopleStyles } from "./PeopleStylesScreen";
 
 export const PeopleScreen = (): React.ReactElement => {
   const [page, setPage] = useState<number>(1);
@@ -59,26 +58,24 @@ export const PeopleScreen = (): React.ReactElement => {
 
   return (
     <SafeAreaLayout>
-      <View style={peopleStyles.container}>
-        <FlatList
-          data={peopleToShow}
-          ListHeaderComponent={
-            <Searcher value={name} onChange={onChangeInputName} />
-          }
-          stickyHeaderIndices={[0]}
-          renderItem={({ item }) => (
-            <Card
-              name={item.name}
-              birth_year={item.birth_year}
-              gender={item.gender}
-              onPress={() => handleClick(item)}
-            />
-          )}
-          onEndReached={handleEndReached}
-          onEndReachedThreshold={0.2}
-          ListFooterComponent={isFetching ? <Text>isLoadingFucker</Text> : null}
-        />
-      </View>
+      <FlatList
+        data={peopleToShow}
+        ListHeaderComponent={
+          <Searcher value={name} onChange={onChangeInputName} />
+        }
+        stickyHeaderIndices={[0]}
+        renderItem={({ item }) => (
+          <Card
+            name={item.name}
+            birth_year={item.birth_year}
+            gender={item.gender}
+            onPress={() => handleClick(item)}
+          />
+        )}
+        onEndReached={handleEndReached}
+        onEndReachedThreshold={0.2}
+        ListFooterComponent={isFetching ? <Text>isLoadingFucker</Text> : null}
+      />
     </SafeAreaLayout>
   );
 };
