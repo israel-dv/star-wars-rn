@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
 
+import { COLORS } from "../../../utils/constants/COLORS";
+
 export const starshipStyles = StyleSheet.create({
   view: {
     width: "100%",
@@ -14,10 +16,10 @@ export const starshipStyles = StyleSheet.create({
   },
   textDetail: {
     fontSize: 22,
-    color: "rgb(121,195,187)",
+    color: COLORS.blueTurquoise,
   },
   textDetailInfo: {
     fontSize: 22,
-    color: "rgb(213,255,124)",
+    color: COLORS.greenLemon,
   },
 });

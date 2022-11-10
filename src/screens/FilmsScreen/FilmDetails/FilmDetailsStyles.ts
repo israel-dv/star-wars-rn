@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
 
+import { COLORS } from "../../../utils/constants/COLORS";
+
 export const filmDetailsStyles = StyleSheet.create({
   view: {
     width: "100%",
@@ -18,18 +20,19 @@ export const filmDetailsStyles = StyleSheet.create({
   },
   textDetail: {
     fontSize: 22,
-    color: "rgb(121,195,187)",
+    color: COLORS.blueTurquoise,
   },
   textDetailInfo: {
     fontSize: 22,
-    color: "rgb(213,255,124)",
+    color: COLORS.greenLemon,
   },
   textCrawl: {
     fontSize: 18,
-    color: "orange",
+    color: COLORS.orange,
   },
   textCrawlInfo: {
     fontSize: 16,
     textAlign: "justify",
+    color: COLORS.grayDark,
   },
 });

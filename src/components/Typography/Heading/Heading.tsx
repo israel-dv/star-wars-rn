@@ -14,7 +14,7 @@ export const Heading = ({
   text,
   fontSize = 24,
   textAlign = "auto",
-  color = COLORS.textSecondaryColor,
+  color = COLORS.grayLight,
   style,
 }: HeadingProps): React.ReactElement => {
   return (

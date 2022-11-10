@@ -39,7 +39,7 @@ export const FilmDetails = ({ route }): React.ReactElement => {
           />
           <Typography.TextRegular
             text={film.producer}
-            style={filmDetailsStyles.textDetail}
+            style={filmDetailsStyles.textDetailInfo}
           />
         </View>
         <View style={filmDetailsStyles.opneningView}>

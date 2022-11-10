@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { SafeGoBackLayout } from "../../../layouts/SafeGoBackLayout";
 import { starshipStyles } from "./StarshipStyles";
 import { Typography } from "../../../components/Typography";
+import { COLORS } from "../../../utils/constants/COLORS";
 
 export const StarshipDetails = ({ route }): React.ReactElement => {
   const { starship } = route.params;
@@ -26,8 +27,7 @@ export const StarshipDetails = ({ route }): React.ReactElement => {
             text={starship.manufacturer}
             style={{
               ...starshipStyles.textDetailInfo,
-
-              color: "orange",
+              color: COLORS.orange,
             }}
           />
         </View>

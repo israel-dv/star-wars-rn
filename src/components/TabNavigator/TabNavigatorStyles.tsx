@@ -17,7 +17,7 @@ enum TapOptions {
 }
 
 const styleIcon = ({ focused, route }: StyleIconProps): React.ReactElement => {
-  const color = focused ? COLORS.textPrimaryColor : COLORS.textSecondaryColor;
+  const color = focused ? COLORS.orange : COLORS.grayDark;
 
   const size = focused ? 24 : 20;
 
@@ -52,7 +52,7 @@ const styleLabel = ({ focused, route }: StyleIconProps) => {
     <Typography.TextRegular
       text={route.name}
       style={{
-        color: focused ? COLORS.textPrimaryColor : COLORS.textSecondaryColor,
+        color: focused ? COLORS.orange : COLORS.grayDark,
         fontSize: 12,
       }}
     />

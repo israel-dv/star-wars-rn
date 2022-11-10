@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
+import { COLORS } from "../../../utils/constants/COLORS";
 
-//TODO: Set Colors on THEME
 export const peopleDetailsStyles = StyleSheet.create({
   view: {
     display: "flex",
@@ -14,15 +14,15 @@ export const peopleDetailsStyles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+
     width: "100%",
   },
   textDetail: {
     fontSize: 22,
-    color: "rgb(197,195,187)",
+    color: COLORS.blueTurquoise,
   },
   textDetailInfo: {
     fontSize: 22,
-    color: "rgb(255,204,111)",
+    color: COLORS.greenLemon,
   },
 });

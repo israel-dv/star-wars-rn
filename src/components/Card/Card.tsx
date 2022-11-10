@@ -1,5 +1,6 @@
 import React from "react";
 import { TouchableHighlight, View } from "react-native";
+import { COLORS } from "../../utils/constants/COLORS";
 import { Typography } from "../Typography/Typography";
 
 import { cardStyles } from "./CardStyles";
@@ -23,11 +24,11 @@ export const Card = ({
         <Typography.Title text={title} />
         <Typography.TextRegular
           text={primaryText}
-          style={{ color: "rgb(96,131,186)" }}
+          style={{ color: COLORS.blueOcean }}
         />
         <Typography.TextRegular
           text={secondayText}
-          style={{ color: "rgb(101,152, 83)" }}
+          style={{ color: COLORS.greenDark }}
         />
       </View>
     </TouchableHighlight>
