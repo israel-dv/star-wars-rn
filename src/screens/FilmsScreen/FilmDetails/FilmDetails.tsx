@@ -1,16 +1,20 @@
 import React from "react";
 import { View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { Typography } from "../../../components/Typography";
-
 import { SafeGoBackLayout } from "../../../layouts/SafeGoBackLayout";
 import { filmDetailsStyles } from "./FilmDetailsStyles";
+import { StackParamList } from "../../../components/Navigators/AppNavigator";
 
-export const FilmDetails = ({ route }): React.ReactElement => {
+type FilmDetailsProps = NativeStackScreenProps<StackParamList, "FilmDetails">;
+
+export const FilmDetails = ({
+  route,
+  navigation,
+}: FilmDetailsProps): React.ReactElement => {
   const { film } = route.params;
-
-  const { goBack } = useNavigation();
+  const { goBack } = navigation;
 
   return (
     <SafeGoBackLayout onGoBack={goBack} title="Film Details">

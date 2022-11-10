@@ -4,7 +4,7 @@ import {
   NativeSyntheticEvent,
   TextInputChangeEventData,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { Card } from "../../components/Card";
 import { Searcher } from "../../components/Searcher";
@@ -15,14 +15,23 @@ import { PeopleResults } from "../../utils/types/People.types";
 import { FooterLoading } from "../../components/FooterLoading";
 import { ScreenLoading } from "../../components/ScreenLoading";
 import { EmptyList } from "../../components/EmptyList";
+import { StackParamList } from "../../components/Navigators/AppNavigator";
 
-export const PeopleScreen = (): React.ReactElement => {
+type PeopleScreenProps = NativeStackScreenProps<
+  StackParamList,
+  "PeopleDetails"
+>;
+
+export const PeopleScreen = ({
+  navigation,
+}: PeopleScreenProps): React.ReactElement => {
+  const { navigate } = navigation;
+
   const [page, setPage] = useState<number>(1);
   const [peopleList, setPeopleList] = useState<PeopleResults[]>([]);
   const [peopleByNameList, setPeopleByNameList] = useState<PeopleResults[]>([]);
   const [name, setName] = useState<string>();
 
-  const navigation = useNavigation();
   const {
     data: people,
     isLoading,
@@ -45,7 +54,7 @@ export const PeopleScreen = (): React.ReactElement => {
   }, [peopleByName]);
 
   const handleClick = (character: PeopleResults) => {
-    navigation.navigate("PeopleDetails", {
+    navigate("PeopleDetails", {
       character,
     });
   };

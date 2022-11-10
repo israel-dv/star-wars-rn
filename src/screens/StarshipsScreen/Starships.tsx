@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FlatList } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { Card } from "../../components/Card";
 import { HeaderList } from "../../components/HeaderList/HeaderList";
@@ -10,13 +10,21 @@ import { StarshipsResults } from "../../utils/types/Starships.types";
 import { FooterLoading } from "../../components/FooterLoading";
 import { ScreenLoading } from "../../components/ScreenLoading";
 import { EmptyList } from "../../components/EmptyList";
-import { isError } from "@tanstack/react-query";
+import { StackParamList } from "../../components/Navigators/AppNavigator";
 
-export const Starships = (): React.ReactElement => {
+type StarshipScreenProps = NativeStackScreenProps<
+  StackParamList,
+  "StarshipDetails"
+>;
+
+export const Starships = ({
+  navigation,
+}: StarshipScreenProps): React.ReactElement => {
+  const { navigate } = navigation;
+
   const [page, setPage] = useState<number>(1);
   const [starshipList, setStarshipList] = useState<StarshipsResults[]>([]);
 
-  const { navigate } = useNavigation();
   const {
     data: starships,
     isLoading,

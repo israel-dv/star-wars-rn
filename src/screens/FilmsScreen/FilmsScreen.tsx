@@ -1,4 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { FlatList } from "react-native";
 
@@ -9,15 +8,19 @@ import { ScreenLoading } from "../../components/ScreenLoading";
 import { useFilms } from "../../hooks/useFilms";
 import { SafeAreaLayout } from "../../layouts/SafeAreaLayout";
 import { FilmsResults } from "../../utils/types/Films.types";
+import { StackParamList } from "../../components/Navigators/AppNavigator";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-export const FilmsScreen = (): React.ReactElement => {
+type FilmScreenProps = NativeStackScreenProps<StackParamList, "FilmDetails">;
+
+export const FilmsScreen = ({
+  navigation,
+}: FilmScreenProps): React.ReactElement => {
+  const { navigate } = navigation;
   const { data: films, isLoading, isError } = useFilms();
-  const { navigate } = useNavigation();
 
   const handleClick = (film: FilmsResults) => {
-    navigate("FilmDetails", {
-      film,
-    });
+    navigate("FilmDetails", { film });
   };
 
   return (

@@ -1,16 +1,24 @@
 import React from "react";
 import { View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { SafeGoBackLayout } from "../../../layouts/SafeGoBackLayout";
 import { starshipStyles } from "./StarshipStyles";
 import { Typography } from "../../../components/Typography";
 import { COLORS } from "../../../utils/constants/COLORS";
+import { StackParamList } from "../../../components/Navigators/AppNavigator";
 
-export const StarshipDetails = ({ route }): React.ReactElement => {
+type StarshipDetailsProps = NativeStackScreenProps<
+  StackParamList,
+  "StarshipDetails"
+>;
+
+export const StarshipDetails = ({
+  route,
+  navigation,
+}: StarshipDetailsProps): React.ReactElement => {
   const { starship } = route.params;
-
-  const { goBack } = useNavigation();
+  const { goBack } = navigation;
 
   return (
     <SafeGoBackLayout onGoBack={goBack} title={"Starship Details"}>

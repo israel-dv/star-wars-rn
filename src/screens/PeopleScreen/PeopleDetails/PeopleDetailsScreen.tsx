@@ -1,16 +1,24 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
 import { View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { Typography } from "../../../components/Typography/Typography";
 import { SafeGoBackLayout } from "../../../layouts/SafeGoBackLayout/SafeGoBackLayout";
 import { peopleDetailsStyles } from "./PeopleDetailsStyles";
+import { StackParamList } from "../../../components/Navigators/AppNavigator";
 
-// TODO: Fix Route typeScript
-export const PeopleDetailsScreen = ({ route }) => {
+type PeopleDetailsProps = NativeStackScreenProps<
+  StackParamList,
+  "PeopleDetails"
+>;
+
+export const PeopleDetailsScreen = ({
+  route,
+  navigation,
+}: PeopleDetailsProps) => {
   const { character } = route.params;
-
-  const { goBack } = useNavigation();
+  const { goBack } = navigation;
 
   return (
     <SafeGoBackLayout onGoBack={goBack} title="Character Details">
