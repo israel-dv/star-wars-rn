@@ -2,8 +2,8 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View } from "react-native";
 
-import { Typography } from "../../components/Typography/Typography";
-import { SafeGoBackLayout } from "../../layouts/SafeGoBackLayout/SafeGoBackLayout";
+import { Typography } from "../../../components/Typography/Typography";
+import { SafeGoBackLayout } from "../../../layouts/SafeGoBackLayout/SafeGoBackLayout";
 import { peopleDetailsStyles } from "./PeopleDetailsStyles";
 
 // TODO: Fix Route typeScript

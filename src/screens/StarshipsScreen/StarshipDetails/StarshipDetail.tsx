@@ -2,9 +2,9 @@ import React from "react";
 import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import { SafeGoBackLayout } from "../../layouts/SafeGoBackLayout";
+import { SafeGoBackLayout } from "../../../layouts/SafeGoBackLayout";
 import { starshipStyles } from "./StarshipStyles";
-import { Typography } from "../../components/Typography";
+import { Typography } from "../../../components/Typography";
 
 export const StarshipDetails = ({ route }): React.ReactElement => {
   const { starship } = route.params;
