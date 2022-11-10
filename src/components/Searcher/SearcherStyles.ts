@@ -4,18 +4,21 @@ import { COLORS } from "../../utils/constants/COLORS";
 
 export const searcherStyles = StyleSheet.create({
   container: {
+    flexDirection: "row",
+    display: "flex",
     width: "100%",
     backgroundColor: COLORS.primaryBackgorund,
+    borderColor: COLORS.borderColor,
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+    justifyContent: "space-between",
   },
   input: {
     backgroundColor: "rgb(37,40,51)",
-    borderColor: COLORS.borderColor,
-    borderRadius: 5,
-    borderWidth: 1,
     color: "white",
     fontFamily: "Sen-Regular",
-    height: 40,
-    marginBottom: 10,
-    padding: 10,
+    flex: 1,
+    borderRadius: 5,
   },
 });

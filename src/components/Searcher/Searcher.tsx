@@ -5,8 +5,10 @@ import {
   TextInputChangeEventData,
   View,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 import { searcherStyles } from "./SearcherStyles";
+import { COLORS } from "../../utils/constants/COLORS";
 
 type SearcherProps = {
   value?: string;
@@ -22,12 +24,13 @@ export const Searcher = ({
       <TextInput
         style={searcherStyles.input}
         placeholder={"Search People"}
-        placeholderTextColor={"white"}
+        placeholderTextColor={COLORS.grayLight}
         cursorColor={"white"}
         focusable={false}
         onChange={onChange}
         value={value}
       />
+      <Ionicons name="md-search-outline" size={18} color={COLORS.grayLight} />
     </View>
   );
 };
